@@ -19,7 +19,7 @@
 4. Correlation of data
 5. Heatmap
 
-#ML4: 
+#ML4: Fake news
 1. Logistic Regression to Predict Fake/True
 2. Regular Expression
 3. Stopwords
