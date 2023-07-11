@@ -61,7 +61,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-**#ML7 Gold**
+**#7 Car Price**
+1. Use multiple regression on one probelm
+2. Lasso regression
+
+**#ML8 Gold**
 1. Random Forest Regressor
 2. distplot
 3. error_score
@@ -71,3 +75,33 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics
+
+**#ML10 Credit Card**
+clustering:
+legit = credit_dataset[credit_dataset.Class == 0]
+fraud = credit_dataset[credit_dataset.Class == 1]
+Concat:
+new_dataset = pd.concat([legit_sample, fraud], axis = 0)
+Set sample size:
+legit_sample = legit.sample(n=85)
+
+**ML12 Big Mart Sales Prediction**
+XGB regression
+Catogorized data based on another column:
+  mode_of_outlet_size = big_mart_data.pivot_table(values='Outlet_Size', columns='Outlet_Type', aggfunc=(lambda x: x.mode()[0]))
+  missing_values = big_mart_data['Outlet_Size'].isnull()
+  big_mart_data.loc[missing_values, 'Outlet_Size'] = big_mart_data.loc[missing_values, "Outlet_Type"].apply(lambda x: mode_of_outlet_size[x])
+
+replace null with mean values:
+  weight_mean = big_mart_data['Item_Weight'].mean()
+  big_mart_data['Item_Weight']. fillna(weight_mean, inplace = True)
+
+encoder = LabelEncoder()
+big_mart_data['Item_Identifier'] = encoder.fit_transform(big_mart_data['Item_Identifier'])
+
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from xgboost import XGBRegressor
+from sklearn import metrics
+
+
