@@ -104,4 +104,4 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn import metrics
 
-
+big_mart_data.replace({'Item_Fat_Content': {'low fat':"Low Fat", 'LF':"Low Fat",'reg':'Regular'}}, inplace = True)
