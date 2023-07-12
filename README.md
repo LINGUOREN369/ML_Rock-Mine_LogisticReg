@@ -105,3 +105,8 @@ from xgboost import XGBRegressor
 from sklearn import metrics
 
 big_mart_data.replace({'Item_Fat_Content': {'low fat':"Low Fat", 'LF':"Low Fat",'reg':'Regular'}}, inplace = True)
+
+**ML13_Customer_Segmentation_K_mean**
+1. K-means
+2. #WCSS -> Within Clusters Sum of Squares
+3. #PLOTING ALL THE CLUSTERS AND THEIR CENTROIDS
