@@ -110,3 +110,35 @@ big_mart_data.replace({'Item_Fat_Content': {'low fat':"Low Fat", 'LF':"Low Fat",
 1. K-means
 2. #WCSS -> Within Clusters Sum of Squares
 3. #PLOTING ALL THE CLUSTERS AND THEIR CENTROIDS
+
+**ML18Movie Recommendation System**
+import difflib
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+1. combine columns
+  combined_features = movie_data['genres']+ ' ' \
++ movie_data['keywords']+ ' ' \
++ movie_data['tagline']+ ' ' \
++ movie_data['cast']+ ' ' \
++ movie_data['director']
+2. Word to number
+vectorizer = TfidfVectorizer()
+feature_vectors = vectorizer.fit_transform(combined_features)
+print(feature_vectors)
+3. Calculating similarity for all values in the list
+similarity = cosine_similarity(feature_vectors)
+4. Find close match with given names
+find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)
+close_match = find_close_match[0]
+index_of_movie = movie_data[movie_data.title == close_match]['index'].values[0]
+similarity_score = list(enumerate(similarity[index_of_movie]))
+sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)
+print("movies suggestion:\n")
+i = 1
+for movie in sorted_similar_movies:
+  index = movie[0]
+  title_from_index = movie_data[movie_data.index == index]['title'].values[0]
+  if (i<30):
+    print(i, '.',title_from_index)
+    i+=1
+
