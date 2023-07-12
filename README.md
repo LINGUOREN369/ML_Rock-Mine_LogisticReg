@@ -128,17 +128,17 @@ print(feature_vectors)
 3. Calculating similarity for all values in the list
 similarity = cosine_similarity(feature_vectors)
 4. Find close match with given names
-find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)
-close_match = find_close_match[0]
-index_of_movie = movie_data[movie_data.title == close_match]['index'].values[0]
-similarity_score = list(enumerate(similarity[index_of_movie]))
-sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)
-print("movies suggestion:\n")
-i = 1
-for movie in sorted_similar_movies:
-  index = movie[0]
-  title_from_index = movie_data[movie_data.index == index]['title'].values[0]
-  if (i<30):
-    print(i, '.',title_from_index)
+find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)\
+close_match = find_close_match[0]\
+index_of_movie = movie_data[movie_data.title == close_match]['index'].values[0]\
+similarity_score = list(enumerate(similarity[index_of_movie]))\
+sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)\
+print("movies suggestion:\n")\
+i = 1\
+for movie in sorted_similar_movies:\
+  index = movie[0]\
+  title_from_index = movie_data[movie_data.index == index]['title'].values[0]\
+  if (i<30):\
+    print(i, '.',title_from_index)\
     i+=1
 
