@@ -87,24 +87,24 @@ legit_sample = legit.sample(n=85)
 
 **ML12 Big Mart Sales Prediction**
 XGB regression
-Catogorized data based on another column:
-  mode_of_outlet_size = big_mart_data.pivot_table(values='Outlet_Size', columns='Outlet_Type', aggfunc=(lambda x: x.mode()[0]))
-  missing_values = big_mart_data['Outlet_Size'].isnull()
-  big_mart_data.loc[missing_values, 'Outlet_Size'] = big_mart_data.loc[missing_values, "Outlet_Type"].apply(lambda x: mode_of_outlet_size[x])
+Catogorized data based on another column:\
+  mode_of_outlet_size = big_mart_data.pivot_table(values='Outlet_Size', columns='Outlet_Type', aggfunc=(lambda x: x.mode()[0]))\
+  missing_values = big_mart_data['Outlet_Size'].isnull()\
+  big_mart_data.loc[missing_values, 'Outlet_Size'] = big_mart_data.loc[missing_values, "Outlet_Type"].apply(lambda x: mode_of_outlet_size[x])\
 
-replace null with mean values:
-  weight_mean = big_mart_data['Item_Weight'].mean()
-  big_mart_data['Item_Weight']. fillna(weight_mean, inplace = True)
+replace null with mean values:\
+  weight_mean = big_mart_data['Item_Weight'].mean()\
+  big_mart_data['Item_Weight']. fillna(weight_mean, inplace = True)\
 
-encoder = LabelEncoder()
-big_mart_data['Item_Identifier'] = encoder.fit_transform(big_mart_data['Item_Identifier'])
+encoder = LabelEncoder()\
+big_mart_data['Item_Identifier'] = encoder.fit_transform(big_mart_data['Item_Identifier'])\
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn import metrics
 
-big_mart_data.replace({'Item_Fat_Content': {'low fat':"Low Fat", 'LF':"Low Fat",'reg':'Regular'}}, inplace = True)
+big_mart_data.replace({'Item_Fat_Content': {'low fat':"Low Fat", 'LF':"Low Fat",'reg':'Regular'}}, inplace = True)\
 
 **ML13_Customer_Segmentation_K_mean**
 1. K-means
